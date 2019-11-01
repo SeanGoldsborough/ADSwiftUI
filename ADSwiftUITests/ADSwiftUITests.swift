@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import Combine
+import SwiftUI
 @testable import ADSwiftUI
 
 class ADSwiftUITests: XCTestCase {
@@ -23,6 +25,28 @@ class ADSwiftUITests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func test_createSiteWithSampleSiteData() {
+
+      guard let url = Bundle.main.url(forResource: "MockSitesJSON", withExtension: "json"),
+        let data = try? Data(contentsOf: url)
+        else { return XCTFail("Mock JSON file missing or data is corrupted") }
+      
+      let sampleSite: Base
+
+      do {
+        sampleSite = try JSONDecoder().decode(Base.self, from: data)
+      } catch {
+        return XCTFail(error.localizedDescription)
+      }
+
+        XCTAssert(sampleSite.sites?.count == 1, "Site array count was expected to be \"1\" but was \"\(sampleSite.sites?.count)\"")
+        
+        XCTAssert(sampleSite.sites?[0].name == "Building #1", "Site name was expected to be \"Building #1\" but was \"\(sampleSite.sites?.count)\"")
+        
+        XCTAssert(sampleSite.sites?[0].address == "120 Broadway, New York, NY 10271", "Site address was expected to be \"120 Broadway, New York, NY 10271\" but was \"\(sampleSite.sites?.count)\"")
+    }
+    
 
     func testPerformanceExample() {
         // This is an example of a performance test case.

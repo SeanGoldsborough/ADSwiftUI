@@ -1,0 +1,22 @@
+
+{
+    "sites": [{
+            "id": "0001",
+            "name": "Building #1",
+            "image": "https://s3.amazonaws.com/decom_uploads/external/building1.jpg",
+            "address": "120 Broadway, New York, NY 10271",
+            "contacts": [{
+                    "name": "Mark Doe",
+                    "phone": "212-312-3100",
+                    "email": "mark@building1.com"
+                },
+                {
+                    "name": "John Smith",
+                    "phone": "212-312-3123",
+                    "phone_home": "212-312-0047",
+                    "email": "john@building1.com"
+                }
+            ]
+        }
+    ]
+}
